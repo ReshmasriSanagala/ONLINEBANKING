@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Bank - Professional Banking Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="grid-pattern"></div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+
+   
+
+    <!-- Header -->
+    <header class="main-header">
+    <div class="nav-container">
+      <a href="#" class="logo">🏦 Oracle Bank</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#branches">Branches</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="loginBtn" class="btn btn-primary" onclick="openLoginModal()">Login</button>
+        <button id="logoutBtn" class="btn btn-secondary" onclick="logout()" style="display: none;">Logout</button>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <!-- Main Content -->
+    <main id="homepage">
+        <!-- Hero Section -->
+        <section class="hero parallax" id="home">
+            <div class="hero-bg-animation"></div>
+            <div class="hero-particles" id="heroParticles"></div>
+            <div class="hero-container">
+                <h1>Welcome to Oracle Bank</h1>
+                <p>Experience the future of banking with our innovative digital solutions, personalized service, and unwavering commitment to your financial success.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <button class="btn btn-secondary" onclick="openLoginModal()">Login to Account</button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section parallax" id="services">
+            <div class="container">
+                <h2 class="section-title reveal">Banking Services</h2>
+                <p class="section-subtitle reveal">Comprehensive financial solutions tailored to meet your personal and business needs</p>
+                <div class="services-grid">
+                    <div class="service-card reveal-scale">
+                        <div class="service-icon">💳</div>
+                        <h3>Personal Banking</h3>
+                        <p>Comprehensive personal banking solutions including savings accounts, checking accounts, and personal loans with competitive rates.</p>
+                        <button class="btn btn-primary" onclick="showLoginModal()">Get Started</button>
+                    </div>
+                    <div class="service-card reveal-scale">
+                        <div class="service-icon">🏢</div>
+                        <h3>Business Banking</h3>
+                        <p>Tailored business solutions with merchant services, business loans, and cash management tools to help your business grow.</p>
+                        <button class="btn btn-primary" onclick="showLoginModal()">Learn More</button>
+                    </div>
+                    <div class="service-card reveal-scale">
+                        <div class="service-icon">📱</div>
+                        <h3>Digital Banking</h3>
+                        <p>24/7 secure online access to your accounts with mobile banking, bill pay, and instant fund transfers at your fingertips.</p>
+                        <button class="btn btn-primary" onclick="showLoginModal()">Access Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section features parallax" id="about">
+            <div class="container">
+                <h2 class="section-title reveal">Why Choose Oracle Bank?</h2>
+                <p class="section-subtitle reveal">Discover the advantages that make us your trusted financial partner</p>
+                <div class="features-grid">
+                    <div class="feature-item reveal-left">
+                        <div class="feature-icon">🔒</div>
+                        <h4>Bank-Grade Security</h4>
+                        <p>Advanced encryption and multi-factor authentication protect your financial data with industry-leading security measures.</p>
+                    </div>
+                    <div class="feature-item reveal-right">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Instant Transfers</h4>
+                        <p>Real-time money transfers and immediate transaction processing for seamless financial management.</p>
+                    </div>
+                    <div class="feature-item reveal-left">
+                        <div class="feature-icon">📞</div>
+                        <h4>24/7 Support</h4>
+                        <p>Round-the-clock customer service with dedicated support specialists for all your banking needs.</p>
+                    </div>
+                    <div class="feature-item reveal-right">
+                        <div class="feature-icon">🌐</div>
+                        <h4>Global Access</h4>
+                        <p>Access your accounts anywhere in the world with our secure mobile app and online banking platform.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Branch Locator Section -->
+        <section class="section parallax" id="branches">
+            <div class="container">
+                <h2 class="section-title reveal">Find Your Branch</h2>
+                <p class="section-subtitle reveal">Locate our branches and get the information you need</p>
+                <div class="branch-finder">
+                    <div class="branch-search reveal-left">
+                        <h3>Branch Code Lookup</h3>
+                        <div class="form-group">
+                            <label for="branchName">Enter Branch Name:</label>
+                            <input type="text" id="branchName" name="branchName" placeholder="e.g., Downtown, Central, North Plaza" />
+                        </div>
+                        <button class="btn btn-primary" onclick="findBranchCode()">Find Branch Code</button>
+                        <div id="branchResult" class="branch-result"></div>
+                    </div>
+                    <div class="branch-info reveal-right">
+                        <h3>Our Branches</h3>
+                        <div id="branchList" class="branch-list">
+                            <div class="branch-item">
+                                <h4>Downtown Branch</h4>
+                                <p>📍 123 Main Street, Downtown</p>
+                                <p>📞 +91-1234-567-890</p>
+                                <p class="branch-code">Branch Code: DT001</p>
+                                <p class="branch-code">IFSC: ORAC0001001</p>
+                            </div>
+                            <div class="branch-item">
+                                <h4>Central Plaza Branch</h4>
+                                <p>📍 456 Central Avenue, City Center</p>
+                                <p>📞 +91-1234-567-891</p>
+                                <p class="branch-code">Branch Code: CP002</p>
+                                <p class="branch-code">IFSC: ORAC0001002</p>
+                            </div>
+                            <div class="branch-item">
+                                <h4>North Plaza Branch</h4>
+                                <p>📍 789 North Street, North Plaza</p>
+                                <p>📞 +91-1234-567-892</p>
+                                <p class="branch-code">Branch Code: NP003</p>
+                                <p class="branch-code">IFSC: ORAC0001003</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact parallax" id="contact">
+            <div class="container">
+                <h2 class="section-title reveal">Contact Us</h2>
+                <p class="section-subtitle reveal">Get in touch with our team for any questions or support</p>
+                <div class="contact-grid">
+                    <div class="contact-info reveal-left">
+                        <h3>Get in Touch</h3>
+                        <p>📧 support@oraclebank.com</p>
+                        <p>📞 +91-1234-567-890</p>
+                        <p>📍 Oracle Bank HQ, Mumbai, India</p>
+                        <p>🕒 Mon-Fri: 9:00 AM - 6:00 PM</p>
+                        <p>🕒 Sat: 9:00 AM - 2:00 PM</p>
+                    </div>
+                    <div class="contact-form reveal-right">
+                        <form onsubmit="handleContactForm(event)">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="Enter your name" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" placeholder="Enter your email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" placeholder="Type your message here" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Dashboard (Hidden initially) -->
+    <div id="dashboard" class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Welcome back, <span id="customerName">Loading...</span></h1>
+                <div class="dashboard-nav">
+                  <button class="btn btn-primary" data-section="overview" onclick="showSection('overview', this)">Overview</button>
+                  <button class="btn btn-secondary" onclick="showSection('accounts')">Accounts</button>
+                    <button class="btn btn-secondary" onclick="showSection('transfer')">Transfer</button>
+                    <button class="btn btn-secondary" onclick="showSection('payees')">Payees</button>
+                    <button class="btn btn-secondary" onclick="showSection('transactions')">Transactions</button>
+                    <button class="btn btn-secondary" onclick="showSection('profile')">Profile</button>
+                   
+                </div>
+            </div>
+
+            <!-- Overview Section -->
+            <div id="overview-section" class="dashboard-section active">
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Account Balance</h3>
+                     <div class="account-balance">
+  <span id="balance-amount">*****</span>
+  <span id="toggle-balance" style="cursor: pointer;">
+    <i class="fas fa-eye" id="eye-icon"></i>
+  </span>
+</div>
+
+
+                        <p id="accountDetails">Loading account details...</p>
+                        <button class="btn btn-primary" onclick="showSection('accounts')">View All Accounts</button>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions">
+                            <button class="btn btn-primary" onclick="showSection('transfer')">Transfer Money</button>
+                            <button class="btn btn-secondary" onclick="showSection('payees')">Manage Payees</button>
+                            <button class="btn btn-secondary" onclick="showSection('transactions')">View Transactions</button>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Recent Transactions</h3>
+                        <div id="recentTransactions">
+                            <!-- Transactions will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accounts Section -->
+            <div id="accounts-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>My Accounts</h2>
+                    <button class="btn btn-primary" onclick="showAccountModal()">Add Account</button>
+                </div>
+                <div id="accountsList" class="accounts-grid">
+                    <!-- Accounts will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Transfer Section -->
+            <div id="transfer-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Fund Transfer</h2>
+                </div>
+                <div class="transfer-container">
+                    <div class="transfer-form-card">
+                        <h3>Transfer Money</h3>
+                        <form id="transferForm" onsubmit="handleTransfer(event)">
+                            <div class="form-group">
+                                <label for="fromAccount">From Account</label>
+                                <select id="fromAccount" name="fromAccount" required>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="transferType">Transfer Type</label>
+                                <select id="transferType" name="transferType" onchange="handleTransferTypeChange()" required>
+                                    <option value="">Select Transfer Type</option>
+                                    <option value="internal">Internal Transfer</option>
+                                    <option value="external">External Transfer</option>
+                                    <option value="payee">Transfer to Payee</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="toAccountGroup" style="display: none;">
+                                <label for="toAccount">To Account</label>
+                                <input type="text" id="toAccount" name="toAccount" placeholder="Enter account number" />
+                            </div>
+                            <div class="form-group" id="payeeGroup" style="display: none;">
+                                <label for="payeeSelect">Select Payee</label>
+                                <select id="payeeSelect" name="payeeSelect">
+                                    <!-- Payees will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="form-group" id="ifscGroup" style="display: none;">
+                                <label for="ifscCode">IFSC Code</label>
+                                <input type="text" id="ifscCode" name="ifscCode" placeholder="Enter IFSC code" />
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">Amount</label>
+                                <input type="number" id="amount" name="amount" step="0.01" min="0.01" placeholder="Enter amount" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" id="description" name="description" placeholder="Optional description" />
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Transfer Money</button>
+                        </form>
+                    </div>
+                    <div class="transfer-summary-card">
+                        <h3>Transfer Summary</h3>
+                        <div id="transferSummary">
+                            <p>Fill the form to see transfer summary</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payees Section -->
+            <div id="payees-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Manage Payees</h2>
+                    <button class="btn btn-primary" onclick="showPayeeModal()">Add Payee</button>
+                </div>
+                <div id="payeesList" class="payees-grid">
+                    <!-- Payees will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Transactions Section -->
+            <div id="transactions-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Transaction History</h2>
+                    <div class="transaction-filters">
+                        <select id="accountFilter" onchange="filterTransactions()">
+                            <option value="">All Accounts</option>
+                        </select>
+                        <select id="typeFilter" onchange="filterTransactions()">
+                            <option value="">All Types</option>
+                            <option value="CREDIT">Credit</option>
+                            <option value="DEBIT">Debit</option>
+                        </select>
+                        <input type="date" id="dateFromFilter" onchange="filterTransactions()" />
+                        <input type="date" id="dateToFilter" onchange="filterTransactions()" />
+                    </div>
+                </div>
+                <div id="transactionsList" class="transactions-list">
+                    <!-- Transactions will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div id="profile-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Profile Settings</h2>
+                </div>
+                <div class="profile-container">
+                    <div class="profile-form-card">
+                        <h3>Personal Information</h3>
+                        <form id="profileForm" onsubmit="handleProfileUpdate(event)">
+                            <div class="form-group">
+                                <label for="profileName">Full Name</label>
+                                <input type="text" id="profileName" name="name" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email</label>
+                                <input type="email" id="profileEmail" name="email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="profileDob">Date of Birth</label>
+                                <input type="date" id="profileDob" name="dob" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="profileAadhar">Aadhar Number</label>
+                                <input type="text" id="profileAadhar" name="aadharNumber" maxlength="12" />
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePan">PAN Number</label>
+                                <input type="text" id="profilePan" name="pan" maxlength="10" />
+                            </div>
+                            <div class="form-group">
+                                <label for="profileAddress">Address</label>
+                                <textarea id="profileAddress" name="address" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+                    <div class="profile-security-card">
+                        <h3>Security Settings</h3>
+                        <form id="passwordForm" onsubmit="handlePasswordChange(event)">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" name="currentPassword" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" name="newPassword" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Change Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login to Oracle Bank</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="custid">CustomerId</label>
+                    <input type="text" id="custid" name="custid" placeholder="Enter your custid" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+            </form>
+            
+           <p style="text-align: center; margin-top: 16px;">
+  Don't have an account?
+  <a href="#" onclick="startSignup(event)" style="color:#67a6fa; text-decoration:underline; background:none; border:none; box-shadow:none; font-size:1em; cursor:pointer;">Sign Up</a>
+</p>
+
+        </div>
+    </div>
+    
+    <!-- Sign Up Form -->
+<div id="signup-form" class="signup-form form-popup" style="display: none;">
+  <h3>Personal Information</h3>
+  <form id="personal-info-form">
+  <button class="form-close-btn" onclick="closeForm()">&times;</button>
+  
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="date" name="dob" placeholder="Date of Birth" required>
+    <input type="text" name="aadharNumber" placeholder="Aadhar Number" required>
+    <input type="text" name="pan" placeholder="PAN Number" required>
+    <input type="text" name="address" placeholder="Address" required>
+<button type="submit" class="btn btn-primary btn-full">Save Details</button>
+  </form>
+  </div>
+ 
+
+
+
+
+<!-- Set Password Form -->
+<div id="set-password-form" class="form-popup" style="display: none;">
+  <h3>Set Password</h3>
+  <form id="password-form">
+  <button class="form-close-btn" onclick="closeForm()">&times;</button>
+  
+    <input type="password" name="loginPassword" placeholder="Login Password" required>
+
+    <input type="password" name="confirmPassword" placeholder="Confirm Login Password" required>
+<button type="submit" class="btn btn-primary btn-full">Set Password</button>
+  </form>
+</div>
+    
+
+    <!-- Account Modal -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAccountModal()">&times;</span>
+            <h2>Account Information</h2>
+            <form id="accountForm" onsubmit="handleAccountUpdate(event)">
+                <div class="form-group">
+                    <label for="accountType">Account Type</label>
+                    <select id="accountType" name="type" required>
+                        <option value="">Select Account Type</option>
+                        <option value="SAVINGS">Savings Account</option>
+                        <option value="CURRENT">Current Account</option>
+                        <option value="FIXED_DEPOSIT">Fixed Deposit</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountBranch">Branch</label>
+                    <select id="accountBranch" name="branchid" required>
+                        <!-- Branches will be populated dynamically -->
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payee Modal -->
+    <div id="payeeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePayeeModal()">&times;</span>
+            <h2 id="payeeModalTitle">Add Payee</h2>
+            <form id="payeeForm" onsubmit="handlePayeeSubmit(event)">
+            <input type="hidden" id="payeeId" name="payeeid" />
+            
+                
+                <div class="form-group">
+                    <label for="payeeName">Payee Name</label>
+                    <input type="text" id="payeeName" name="name" placeholder="Enter payee name" required />
+                </div>
+                <div class="form-group">
+                    <label for="payeeBank">Bank Name</label>
+                    <input type="text" id="payeeBank" name="bank" placeholder="Enter bank name" required />
+                </div>
+                <div class="form-group">
+                    <label for="payeeIfsc">IFSC Code</label>
+                    <input type="text" id="payeeIfsc" name="ifsc" placeholder="Enter IFSC code" required />
+                </div>
+                <div class="form-group">
+                    <label for="payeeAccno">Account Number</label>
+                    <input type="text" id="payeeAccno" name="accno" placeholder="Enter account number" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Save Payee</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Personal Banking</a></li>
+                        <li><a href="#">Business Banking</a></li>
+                        <li><a href="#">Loans & Credit</a></li>
+                        <li><a href="#">Investment Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Security Center</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News & Updates</a></li>
+                        <li><a href="#">Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Oracle Bank. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
